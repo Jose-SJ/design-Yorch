@@ -1,10 +1,10 @@
 //data base
 var mysql = require('mysql');
 var con = mysql.createConnection({
-    host: 'rhpj-database.czm8qnebos6f.us-east-1.rds.amazonaws.com',
+    host: 'basedata.czm8qnebos6f.us-east-1.rds.amazonaws.com',
     user: 'RHPJ',
-    password: 'Miuniverso423',
-    database: 'Database-schema-J'
+    password: 'qwertyuiop',
+    database: 'josedesign'//AQUIIIIIIIII  
 });
 //sniffer
 const dgram = require("dgram");
@@ -65,9 +65,11 @@ server.on("message", (msg, rinfo) => {
 });
 server.on("listening", () => {
   const address = server.address();
-  //console.log(`server listening ${address.address}:${address.port}`);
+  
 });
-server.bind(51000, "172.31.36.95"); //172.31.36.95
+server.bind(51000, "172.31.36.95"); //172.31.36.95---JOSEEEEE
+//server.bind(52000, "172.31.43.30");
+
 // Prints: server listening 0.0.0.0:41234
 
 // server
@@ -90,10 +92,11 @@ app.get("/", (req, res) => {
 
 app.get("/datos", (req, res) => {
   if (con) {
-    var sql = "SELECT * FROM syrusmsg ORDER BY igmsg DESC limit 1 ";
+    var sql = "SELECT * FROM rhpj ORDER BY id DESC limit 1 ";
     con.query(sql, function(err, result) {
       if (err) throw err;
       res.json(result[0]);
+      
       //con.end();
     });
   } else {
